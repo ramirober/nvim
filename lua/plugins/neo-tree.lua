@@ -8,15 +8,14 @@ return {
 	},
 	config = function()
 		vim.keymap.set("n", "<leader>e", ":Neotree source=filesystem toggle position=left<CR>")
-		require('neo-tree').setup({
+		require("neo-tree").setup({
 			close_if_last_window = true,
 			source_selector = {
-				winbar = true
+				winbar = true,
 			},
 			window = {
-				width = 36
-			}
+				width = 36,
+			},
 		})
-	end
+	end,
 }
-
