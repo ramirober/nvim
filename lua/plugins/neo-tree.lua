@@ -9,6 +9,11 @@ return {
 	config = function()
 		vim.keymap.set("n", "<leader>e", ":Neotree source=filesystem toggle position=left<CR>")
 		require("neo-tree").setup({
+			filesystem = {
+				filtered_items = {
+					visible = true,
+				},
+			},
 			close_if_last_window = true,
 			source_selector = {
 				winbar = true,

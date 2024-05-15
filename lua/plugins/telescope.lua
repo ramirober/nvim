@@ -7,13 +7,18 @@ return {
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>p", builtin.find_files, {})
 			vim.keymap.set("n", "<leader>l", builtin.live_grep, {})
-			-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 		end,
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		config = function()
 			require("telescope").setup({
+				pickers = {
+					find_files = {
+						-- find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+						hidden = true,
+					},
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
