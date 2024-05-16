@@ -1,7 +1,8 @@
 return {
 	"lewis6991/gitsigns.nvim",
 	config = function()
-		require("gitsigns").setup({
+		local gitsigns = require("gitsigns")
+		gitsigns.setup({
 			signs = {
 				add = { text = "┃" },
 				change = { text = "┃" },
@@ -44,5 +45,6 @@ return {
 				col = 1,
 			},
 		})
+		vim.keymap.set("n", "<leader>d", gitsigns.preview_hunk, {})
 	end,
 }
