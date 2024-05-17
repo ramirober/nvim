@@ -9,6 +9,7 @@ return {
 			sources = {
 				require("none-ls.diagnostics.eslint_d"),
 				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.clang_format,
 				null_ls.builtins.formatting.prettierd.with({
 					extra_filetypes = {},
 					extra_args = {
