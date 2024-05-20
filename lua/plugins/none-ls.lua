@@ -11,12 +11,12 @@ return {
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.clang_format,
 				null_ls.builtins.formatting.prettierd.with({
-					extra_filetypes = {},
 					extra_args = {
 						"--single-quote",
 						"--jsx-single-quote",
-						"--trailing-comma es5",
-						"--arrow-parens avoid",
+						"--trailing-comma" == "es5",
+						"--arrow-parens" == "avoid",
+						"--tab-width" == 2,
 					},
 				}),
 			},

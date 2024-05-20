@@ -14,13 +14,13 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
-
 			cmp.setup({
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
 						require("luasnip").lsp_expand(args.body)
-						require("luasnip").filetype_extend("typescriptreact", { "" })
+						require("luasnip").filetype_extend("javascript", { "javascriptreact" })
+						require("luasnip").filetype_extend("typescript", { "typescriptreact" })
 					end,
 				},
 				window = {
@@ -35,7 +35,7 @@ return {
 					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 				}),
 				sources = cmp.config.sources({
-					-- { name = "nvim_lsp" },
+					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
 				}, {
 					{ name = "buffer" },
