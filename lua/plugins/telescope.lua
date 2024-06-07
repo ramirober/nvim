@@ -19,6 +19,9 @@ return {
 						-- find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
 						hidden = true,
 					},
+					buffers = {
+						initial_mode = "normal",
+					},
 				},
 				extensions = {
 					["ui-select"] = {
