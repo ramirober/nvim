@@ -14,12 +14,12 @@ return {
 					visible = true,
 				},
 			},
-			close_if_last_window = true,
+			close_if_last_window = false,
 			source_selector = {
 				winbar = true,
 			},
 			window = {
-				width = 36,
+				width = 38,
 			},
 		})
 	end,
