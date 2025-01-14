@@ -21,6 +21,8 @@ return {
       window = {
         width = 38,
       },
+      enable_diagnostics = true,
+      enable_git_status = true,
     })
   end,
 }
