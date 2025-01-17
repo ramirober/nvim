@@ -8,6 +8,9 @@ return {
 			vim.keymap.set("n", "<leader>p", builtin.find_files, {})
 			vim.keymap.set("n", "<leader>l", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>b", builtin.buffers, {})
+			vim.keymap.set("n", "<leader>c", builtin.commands, {})
+			vim.keymap.set("n", "<leader>s", builtin.current_buffer_fuzzy_find, {})
+			vim.keymap.set("n", "<leader>t", builtin.builtin, {})
 		end,
 	},
 	{
@@ -16,10 +19,10 @@ return {
 			require("telescope").setup({
 				pickers = {
 					find_files = {
-						-- find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
 						hidden = true,
 					},
 					buffers = {
+						sort_lastused = true,
 						initial_mode = "normal",
 					},
 				},
