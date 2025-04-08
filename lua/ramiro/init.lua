@@ -15,3 +15,5 @@ vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 
 vim.o.signcolumn = "yes"
+
+vim.api.nvim_set_option("clipboard", "unnamed")

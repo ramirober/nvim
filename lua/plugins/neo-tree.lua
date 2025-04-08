@@ -15,7 +15,7 @@ return {
 				winbar = true,
 			},
 			enable_diagnostics = true,
-			enable_git_status = true,
+			enable_git_status = true
 		})
 		vim.keymap.set("n", "<leader>e", ":Neotree action=focus position=float reveal<CR>")
 	end,
