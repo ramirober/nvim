@@ -12,7 +12,7 @@ return {
 
       system_prompt = "COPILOT_INSTRUCTIONS", -- System prompt to use (can be specified manually in prompt via /).
 
-      model = "gpt-4o-2024-11-20",         -- Default model to use, see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
+      model = "gpt-4o",                    -- Default model to use, see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
       agent = "copilot",                   -- Default agent to use, see ':CopilotChatAgents' for available agents (can be specified manually in prompt via @).
       context = nil,                       -- Default context or array of contexts to use (can be specified manually in prompt via #).
       sticky = nil,                        -- Default sticky prompt or array of sticky prompts to use at start of every new chat.
@@ -25,9 +25,9 @@ return {
 
       -- default selection
       -- see select.lua for implementation
-      selection = function(source)
-        return select.visual(source) or select.buffer(source)
-      end,
+      -- selection = function(source)
+      --  return select.visual(source) or select.buffer(source)
+      -- end,
 
       -- default window options
       window = {
@@ -36,7 +36,7 @@ return {
         height = 0.8,       -- fractional height of parent, or absolute height in rows when > 1
         -- Options below only apply to floating windows
         relative = "editor", -- 'editor', 'win', 'cursor', 'mouse'
-        border = "single",  -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
+        border = "rounded", -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
         row = nil,          -- row position of the window, default is centered
         col = nil,          -- column position of the window, default is centered
         title = "Copilot Chat", -- title of chat window
@@ -181,5 +181,6 @@ return {
       },
     },
     -- See Commands section for default commands if you want to lazy load on them
+    vim.keymap.set("n", "<leader>c", ":CopilotChat<CR>", {}),
   },
 }
