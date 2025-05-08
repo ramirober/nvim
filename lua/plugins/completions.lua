@@ -17,6 +17,9 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load()
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			cmp.setup({
+				formatting = {
+					format = require("tailwindcss-colorizer-cmp").formatter,
+				},
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
@@ -41,6 +44,14 @@ return {
 					{ name = "luasnip" }, -- For luasnip users.
 					{ name = "buffer" },
 				}),
+			})
+		end,
+	},
+	{
+		"roobert/tailwindcss-colorizer-cmp.nvim",
+		config = function()
+			require("tailwindcss-colorizer-cmp").setup({
+				color_square_width = 2,
 			})
 		end,
 	},
