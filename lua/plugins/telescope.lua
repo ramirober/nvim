@@ -6,6 +6,7 @@ return {
 		config = function()
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>p", builtin.find_files, {})
+			vim.keymap.set("n", "<leader>v", builtin.oldfiles, {})
 			vim.keymap.set("n", "<leader>l", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 			vim.keymap.set("n", "<leader>s", builtin.current_buffer_fuzzy_find, {})
@@ -20,6 +21,11 @@ return {
 					find_files = {
 						theme = selectedTheme,
 						hidden = false,
+					},
+					oldfiles = {
+						theme = selectedTheme,
+						hidden = false,
+						initial_mode = "normal",
 					},
 					buffers = {
 						theme = selectedTheme,
