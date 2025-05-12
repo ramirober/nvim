@@ -15,25 +15,25 @@ return {
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		config = function()
-			local selectedTheme = "dropdown"
+			-- local selectedTheme = "dropdown"
 			require("telescope").setup({
 				pickers = {
 					find_files = {
-						theme = selectedTheme,
+						-- theme = selectedTheme,
 						hidden = false,
 					},
 					oldfiles = {
-						theme = selectedTheme,
+						-- theme = selectedTheme,
 						hidden = false,
 						initial_mode = "normal",
 					},
 					buffers = {
-						theme = selectedTheme,
+						-- theme = selectedTheme,
 						sort_lastused = true,
 						initial_mode = "normal",
 					},
 					live_grep = {
-						theme = selectedTheme,
+						-- theme = selectedTheme,
 					},
 				},
 				extensions = {
@@ -42,6 +42,10 @@ return {
 					},
 				},
 				defaults = {
+					-- sorting_strategy = "ascending",
+					-- selection_strategy = "follow",
+					-- layout_strategy = "vertical",
+					-- path_display = { "smart" },
 					mappings = {
 						n = {
 							["dd"] = require("telescope.actions").delete_buffer,
