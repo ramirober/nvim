@@ -42,6 +42,7 @@ return {
               directory = "", -- Text to show when the buffer is a directory
             },
             show_filename_only = false,
+            mode = 2,
           },
         },
         lualine_x = {},
@@ -59,7 +60,8 @@ return {
               alternate_file = "#", -- Text to show to identify the alternate file
               directory = "", -- Text to show when the buffer is a directory
             },
-            show_filename_only = true,
+            show_filename_only = false,
+            mode = 2,
           },
         },
         lualine_x = {},

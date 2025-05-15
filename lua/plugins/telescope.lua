@@ -30,6 +30,7 @@ return {
 					buffers = {
 						-- theme = selectedTheme,
 						sort_lastused = true,
+						sort_mru = true,
 						initial_mode = "normal",
 					},
 					live_grep = {
