@@ -743,6 +743,17 @@ return {
 			end,
 		})
 
-		vim.keymap.set("n", "<leader>e", ":Neotree action=focus<CR>")
+		vim.keymap.set("n", "<leader>e", function()
+			local current_buf = vim.api.nvim_get_current_buf()
+			local current_filetype = vim.bo[current_buf].filetype
+
+			if current_filetype == "neo-tree" then
+				-- Go to right buffer (TODO: Make more dynamic, go to prev buffer)
+				vim.cmd("wincmd l")
+			else
+				-- Focus on Neotree
+				vim.cmd("Neotree action=focus")
+			end
+		end, { noremap = true, silent = true })
 	end,
 }
