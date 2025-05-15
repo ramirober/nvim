@@ -26,6 +26,7 @@ return {
 						-- theme = selectedTheme,
 						hidden = false,
 						initial_mode = "normal",
+						only_cwd = true,
 					},
 					buffers = {
 						-- theme = selectedTheme,
