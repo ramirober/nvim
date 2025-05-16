@@ -26,6 +26,7 @@ return {
 
       local lspconfig = require("lspconfig")
 
+      virtual_text = false
       local function organize_imports()
         local params = {
           command = "_typescript.organizeImports",
