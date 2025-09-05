@@ -11,7 +11,8 @@ return {
     -- for example
     enabled = true, -- if you want to enable the plugin
     message_template = " <author> • <date> • <<sha>> • <summary> ", -- template for the blame message, check the Message template section for more options
-    date_format = "%d/%m/%Y %H:%M:%S", -- template for the date, check Date format section for more options
+    -- date_format = "%r (%d/%m/%Y %H:%M:%S)", -- template for the date, check Date format section for more options
+    date_format = "%r", -- template for the date, check Date format section for more options
     virtual_text_column = 2, -- virtual text start column, check Start virtual text at column section for more options
   },
 }

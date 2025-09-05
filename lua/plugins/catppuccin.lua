@@ -11,7 +11,7 @@ return {
 				light = "latte",
 				dark = "mocha",
 			},
-			transparent_background = true,
+			transparent_background = false,
 			term_colors = true,
 			show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
 			dim_inactive = {
