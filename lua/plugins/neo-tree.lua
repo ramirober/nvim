@@ -14,6 +14,7 @@ return {
 			-- The name used here must be the same name you would use in a require() call.
 			sources = {
 				"filesystem",
+        "git_status",
 				-- "document_symbols",
 			},
 			add_blank_line_at_top = false, -- Add a blank line at the top of the tree.
@@ -55,13 +56,12 @@ return {
 			use_default_mappings = true,
 			-- source_selector provides clickable tabs to switch between sources.
 			source_selector = {
-				winbar = false, -- toggle to show selector on winbar
+				winbar = true, -- toggle to show selector on winbar
 				statusline = false, -- toggle to show selector on statusline
 				show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
 				-- of the top visible node when scrolled down.
 				sources = {
 					{ source = "filesystem" },
-					{ source = "buffers" },
 					{ source = "git_status" },
 				},
 				content_layout = "start", -- only with `tabs_layout` = "equal", "focus"
@@ -447,7 +447,7 @@ return {
 					["c"] = "copy", -- takes text input for destination, also accepts the config.show_path and config.insert_as options
 					["m"] = "move", -- takes text input for destination, also accepts the config.show_path and config.insert_as options
 					["e"] = "toggle_auto_expand_width",
-					["q"] = "close_window",
+					-- ["q"] = "close_window",
 					["?"] = "show_help",
 					["<"] = "prev_source",
 					[">"] = "next_source",
