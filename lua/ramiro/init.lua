@@ -24,4 +24,8 @@ vim.o.signcolumn = "yes"
 --     vim.opt_local.formatoptions:remove("<CR>")
 --   end,
 -- })
+
+-- Keybind para alternar entre los 2 buffers recientemente usados
+vim.keymap.set("n", "<leader><leader>", "<C-^>")
+
 vim.api.nvim_set_option("clipboard", "unnamed")
