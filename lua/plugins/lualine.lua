@@ -44,6 +44,7 @@ return {
             },
             show_filename_only = false,
             mode = 2,
+            max_length = vim.o.columns * 2 / 3,
           },
         },
         lualine_x = {},
