@@ -24,8 +24,6 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local lspconfig = require("lspconfig")
-
 			virtual_text = false
 			local function organize_imports()
 				local params = {
@@ -36,7 +34,8 @@ return {
 				vim.lsp.buf.execute_command(params)
 			end
 
-			lspconfig.ts_ls.setup({
+			-- Using vim.lsp.config instead of require('lspconfig')
+			vim.lsp.config("ts_ls", {
 				capabilities = capabilities,
 				commands = {
 					OrganizeImports = {
@@ -45,28 +44,32 @@ return {
 					},
 				},
 			})
-			lspconfig.jdtls.setup({
+
+			vim.lsp.config("jdtls", {
 				capabilities = capabilities,
 			})
-			lspconfig.clangd.setup({
+
+			vim.lsp.config("clangd", {
 				capabilities = capabilities,
 			})
-			lspconfig.gopls.setup({
+
+			vim.lsp.config("gopls", {
 				capabilities = capabilities,
 			})
-			lspconfig.html.setup({
+
+			vim.lsp.config("html", {
 				capabilities = capabilities,
 			})
-			lspconfig.cssls.setup({
+
+			vim.lsp.config("cssls", {
 				capabilities = capabilities,
 			})
-			lspconfig.lua_ls.setup({
+
+			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 			})
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.hls.setup({
+
+			vim.lsp.config("hls", {
 				capabilities = capabilities,
 			})
 
