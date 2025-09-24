@@ -12,6 +12,7 @@ return {
         disabled_filetypes = {
           statusline = { "neo-tree" },
           winbar = { "neo-tree" },
+          tabline = { "neo-tree" },
         },
       },
       disabled_buftypes = { "quickfix", "prompt" },
@@ -33,25 +34,33 @@ return {
       },
       winbar = {
         lualine_a = {},
-        lualine_b = {},
-        lualine_c = {
+        lualine_b = {
           {
-            "buffers",
-            symbols = {
-              modified = " ●", -- Text to show when the buffer is modified
-              alternate_file = "#", -- Text to show to identify the alternate file
-              directory = "", -- Text to show when the buffer is a directory
-            },
-            show_filename_only = false,
-            mode = 2,
-            max_length = vim.o.columns * 2 / 3,
+            "filename",
+            file_status = true, -- displays file status (readonly status, modified status)
+            path = 1,     -- 0 = just filename, 1 = relative path, 2 = absolute path
           },
         },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},
       },
       inactive_winbar = {
+        lualine_a = {},
+        lualine_b = {
+          {
+            "filename",
+            file_status = true, -- displays file status (readonly status, modified status)
+            path = 1,     -- 0 = just filename, 1 = relative path, 2 = absolute path
+          },
+        },
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+      tabline = {
         lualine_a = {},
         lualine_b = {},
         lualine_c = {
@@ -62,7 +71,7 @@ return {
               alternate_file = "#", -- Text to show to identify the alternate file
               directory = "", -- Text to show when the buffer is a directory
             },
-            show_filename_only = false,
+            show_filename_only = true,
             mode = 2,
           },
         },
