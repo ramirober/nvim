@@ -26,12 +26,13 @@ return {
 
 			virtual_text = false
 			local function organize_imports()
-				local params = {
-					command = "_typescript.organizeImports",
-					arguments = { vim.api.nvim_buf_get_name(0) },
-					title = "",
-				}
-				vim.lsp.buf.execute_command(params)
+				-- Método moderno usando code actions
+				vim.lsp.buf.code_action({
+					context = {
+						only = { "source.organizeImports" },
+					},
+					apply = true,
+				})
 			end
 
 			-- Using vim.lsp.config instead of require('lspconfig')
@@ -100,7 +101,7 @@ return {
 			vim.keymap.set("n", "<leader>g", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>.", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "<leader>,", vim.diagnostic.goto_next, {})
-			vim.keymap.set("n", "<leader>o", ":OrganizeImports<CR>", {})
+			vim.keymap.set("n", "<leader>o", organize_imports, {})
 		end,
 	},
 }
