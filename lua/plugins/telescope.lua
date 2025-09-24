@@ -15,28 +15,40 @@ return {
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		config = function()
-			local selectedTheme = "dropdown" -- Themes: dropdown, cursor, ivy
+			-- local selectedTheme = "dropdown" -- Themes: dropdown, cursor, ivy
 			require("telescope").setup({
+				defaults = {
+					theme = "dropdown",
+					-- sorting_strategy = "ascending",
+					-- selection_strategy = "follow",
+					layout_strategy = "vertical",
+					-- path_display = { "smart" },
+					mappings = {
+						n = {
+							["dd"] = require("telescope.actions").delete_buffer,
+						},
+					},
+				},
 				pickers = {
 					find_files = {
-						theme = selectedTheme,
+						-- theme = selectedTheme,
 						hidden = false,
 					},
 					oldfiles = {
-						theme = selectedTheme,
+						-- theme = selectedTheme,
 						hidden = false,
 						initial_mode = "normal",
 						only_cwd = true,
 					},
 					buffers = {
-						theme = selectedTheme,
+						-- theme = selectedTheme,
 						sort_lastused = true,
 						sort_mru = true,
 						initial_mode = "normal",
 						ignore_current_buffer = true,
 					},
 					live_grep = {
-						theme = selectedTheme,
+						-- theme = selectedTheme,
 					},
 				},
 				extensions = {
@@ -52,17 +64,6 @@ return {
 							override_file_sorter = true, -- override the file sorter
 							case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 							-- the default case_mode is "smart_case"
-						},
-					},
-				},
-				defaults = {
-					-- sorting_strategy = "ascending",
-					-- selection_strategy = "follow",
-					layout_strategy = "vertical",
-					-- path_display = { "smart" },
-					mappings = {
-						n = {
-							["dd"] = require("telescope.actions").delete_buffer,
 						},
 					},
 				},

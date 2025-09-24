@@ -10,24 +10,18 @@ return {
     ---LHS of toggle mappings in NORMAL mode
     toggler = {
       ---Line-comment toggle keymap
-      line = "<leader>¡", -- Logitech Keyboard
-      -- line = "<leader>=", -- Macbook
-      -- line = "<leader>¿", -- Lenovo Thinkbook
+      line = "<leader>n",
 
       ---Block-comment toggle keymap
-      -- block = "<leader>`", -- Macbook
-      block = "<leader>'", -- Logitech Keyboard, Lenovo Thinkbook
+      block = "<leader>m",
     },
     ---LHS of operator-pending mappings in NORMAL and VISUAL mode
     opleader = {
       ---Line-comment keymap
-      line = "<leader>¡", -- Logitech Keyboard
-      -- line = "<leader>=", -- Macbook
-      -- line = "<leader>¿", -- Lenovo Thinkbook
+      line = "<leader>n",
 
       ---Block-comment keymap
-      -- block = "<leader>`", -- Macbook
-      block = "<leader>'", -- Logitech Keyboard, Lenovo Thinkbook
+      block = "<leader>m",
     },
     ---LHS of extra mappings
     -- extra = {
