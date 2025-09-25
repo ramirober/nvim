@@ -33,15 +33,18 @@ return {
 					find_files = {
 						-- theme = selectedTheme,
 						hidden = false,
+						previewer = false,
 					},
 					oldfiles = {
 						-- theme = selectedTheme,
 						hidden = false,
+						previewer = false,
 						initial_mode = "normal",
 						only_cwd = true,
 					},
 					buffers = {
 						-- theme = selectedTheme,
+						previewer = false,
 						sort_lastused = true,
 						sort_mru = true,
 						initial_mode = "normal",
@@ -49,6 +52,7 @@ return {
 					},
 					live_grep = {
 						-- theme = selectedTheme,
+						previewer = false,
 					},
 				},
 				extensions = {
