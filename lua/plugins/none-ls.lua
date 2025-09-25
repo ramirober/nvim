@@ -13,7 +13,7 @@ return {
 			sources = {
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.clang_format,
-				null_ls.builtins.formatting.beautysh,
+				-- null_ls.builtins.formatting.beautysh,
 				null_ls.builtins.formatting.prettier.with({
 					extra_args = {
 						"--single-quote",
