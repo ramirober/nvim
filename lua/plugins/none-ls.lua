@@ -1,30 +1,31 @@
 return {
-  "nvimtools/none-ls.nvim",
-  dependencies = {
-    "nvimtools/none-ls-extras.nvim",
-  },
-  config = function()
-    local null_ls = require("null-ls")
-    local utils = require("null-ls.utils")
+	"nvimtools/none-ls.nvim",
+	dependencies = {
+		"nvimtools/none-ls-extras.nvim",
+	},
+	config = function()
+		local null_ls = require("null-ls")
+		local utils = require("null-ls.utils")
 
-    root_dir = utils.root_pattern(".prettierrc", ".prettierrc.js", "package.json", ".git")
+		root_dir = utils.root_pattern(".prettierrc", ".prettierrc.js", ".git")
 
-    null_ls.setup({
-      sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.clang_format,
-        null_ls.builtins.formatting.prettierd.with({
-          extra_args = {
-            "--single-quote",
-            "--jsx-single-quote",
-            "--trailing-comma=es5",
-            "--arrow-parens=avoid",
-            "--tab-width=2",
-          },
-        }),
-      },
-    })
+		null_ls.setup({
+			sources = {
+				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.clang_format,
+				null_ls.builtins.formatting.beautysh,
+				null_ls.builtins.formatting.prettier.with({
+					extra_args = {
+						"--single-quote",
+						"--jsx-single-quote",
+						"--trailing-comma=es5",
+						"--arrow-parens=avoid",
+						"--tab-width=2",
+					},
+				}),
+			},
+		})
 
-    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
-  end,
+		vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
+	end,
 }

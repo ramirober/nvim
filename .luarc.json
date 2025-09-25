@@ -2,6 +2,7 @@
     "diagnostics.globals": [
         "vim",
         "format",
-        "virtual_text"
+        "virtual_text",
+        "root_dir"
     ]
 }

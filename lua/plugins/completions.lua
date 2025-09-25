@@ -26,13 +26,13 @@ return {
 						require("luasnip").lsp_expand(args.body)
 						require("luasnip").filetype_extend("javascript", { "javascriptreact" })
 						require("luasnip").filetype_extend("typescript", { "typescriptreact" })
-            require("luasnip").filetype_extend("html", { "html" })
-            require("luasnip").filetype_extend("css", { "css" })
-            require("luasnip").filetype_extend("java", { "java" })
-            require("luasnip").filetype_extend("c", { "c" })
-            require("luasnip").filetype_extend("cpp", { "cpp" })
-            require("luasnip").filetype_extend("go", { "go" })
-            require("luasnip").filetype_extend("lua", { "lua" })
+						require("luasnip").filetype_extend("html", { "html" })
+						require("luasnip").filetype_extend("css", { "css" })
+						require("luasnip").filetype_extend("java", { "java" })
+						require("luasnip").filetype_extend("c", { "c" })
+						require("luasnip").filetype_extend("cpp", { "cpp" })
+						require("luasnip").filetype_extend("go", { "go" })
+						require("luasnip").filetype_extend("lua", { "lua" })
 					end,
 				},
 				window = {
@@ -48,9 +48,8 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" }, -- LSP Suggestions
-					-- { name = "luasnip" }, -- Deactivated for now to avoid duplicated suggestions
+					{ name = "luasnip" }, -- Deactivated for now to avoid duplicated suggestions
 					-- { name = "buffer" }, -- Deactivated for now to avoid duplicated suggestions
-          { name = "path" }, -- File Path Suggestions
 				}),
 			})
 		end,
