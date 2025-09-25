@@ -15,13 +15,14 @@ return {
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		config = function()
+			-- TODO: Check sorting order (inverted) on dropdown theme and fix it
 			-- local selectedTheme = "dropdown" -- Themes: dropdown, cursor, ivy
 			require("telescope").setup({
 				defaults = {
-					theme = "dropdown",
+					-- theme = "dropdown",
 					-- sorting_strategy = "ascending",
 					-- selection_strategy = "follow",
-					layout_strategy = "vertical",
+					-- layout_strategy = "vertical",
 					-- path_display = { "smart" },
 					mappings = {
 						n = {
@@ -31,19 +32,22 @@ return {
 				},
 				pickers = {
 					find_files = {
-						-- theme = selectedTheme,
+						-- theme = "dropdown",
 						hidden = false,
 						previewer = false,
+            -- sorting_strategy = "ascending",
+            -- layout_strategy = "vertical",
 					},
 					oldfiles = {
-						-- theme = selectedTheme,
+						-- theme = "dropdown",
 						hidden = false,
 						previewer = false,
+						-- sorting_strategy = "ascending",
 						initial_mode = "normal",
 						only_cwd = true,
 					},
 					buffers = {
-						-- theme = selectedTheme,
+						theme = "dropdown",
 						previewer = false,
 						sort_lastused = true,
 						sort_mru = true,
@@ -51,8 +55,7 @@ return {
 						ignore_current_buffer = true,
 					},
 					live_grep = {
-						-- theme = selectedTheme,
-						previewer = false,
+						previewer = true,
 					},
 				},
 				extensions = {
