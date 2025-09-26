@@ -14,7 +14,17 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "ts_ls", "html", "cssls", "clangd" },
+				ensure_installed = {
+					"lua_ls",
+					"ts_ls",
+					"html",
+					"cssls",
+					"clangd",
+					"jdtls",
+					"gopls",
+					"hls",
+					"bashls",
+				},
 			})
 		end,
 	},
@@ -44,6 +54,14 @@ return {
 						description = "Organize Imports",
 					},
 				},
+			})
+
+			vim.lsp.config("bashls", {
+				capabilities = capabilities,
+			})
+
+			vim.lsp.config("cssls", {
+				capabilities = capabilities,
 			})
 
 			vim.lsp.config("jdtls", {

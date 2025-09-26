@@ -35,8 +35,8 @@ return {
 						-- theme = "dropdown",
 						hidden = false,
 						previewer = false,
-            -- sorting_strategy = "ascending",
-            -- layout_strategy = "vertical",
+						-- sorting_strategy = "ascending",
+						-- layout_strategy = "vertical",
 					},
 					oldfiles = {
 						-- theme = "dropdown",
@@ -59,10 +59,9 @@ return {
 					},
 				},
 				extensions = {
+					-- Telescope extension for code actions
 					["ui-select"] = {
-						require("telescope.themes").get_dropdown({
-							-- Dropdown theme options
-						}),
+						require("telescope.themes").get_dropdown({}),
 					},
 					extensions = {
 						fzf = {

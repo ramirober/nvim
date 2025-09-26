@@ -16,7 +16,9 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
+-- Load personal settings on /lua/ramiro/init.lua
 require("ramiro")
+-- Load all plugins on /lua/plugins/*.lua
 require("lazy").setup("plugins", {
 	ui = {
 		border = "rounded",
