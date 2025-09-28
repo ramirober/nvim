@@ -92,14 +92,14 @@ return {
 
 			vim.diagnostic.config({
 				virtual_text = {
-					prefix = "● ", -- Could be '●', '▎', 'x'
+					prefix = "●", -- Could be '●', '▎', 'x'
 					spacing = 2,
 				},
 				float = {
 					border = "rounded", -- styles: "single", "double", "rounded", "solid", "shadow"
 					focusable = false,
 					-- source = "always",
-					prefix = "● ", -- Could be '●', '▎', 'x'",
+					prefix = "●", -- Could be '●', '▎', 'x'",
 				},
 				signs = true,
 				underline = true,
@@ -111,7 +111,9 @@ return {
 				vim.lsp.buf.hover({
 					border = "rounded",
 				})
-			end)
+			  end
+      )
+
 			vim.keymap.set("n", "<leader>w", vim.diagnostic.open_float, {})
 			vim.keymap.set("n", "<leader>g", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>.", vim.lsp.buf.code_action, {})
