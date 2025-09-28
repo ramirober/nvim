@@ -21,7 +21,23 @@ return {
 				lualine_b = { "branch", "diff", { "diagnostics", update_in_insert = true } },
 				lualine_c = {},
 				lualine_x = {},
-				lualine_y = { "filetype", "progress" },
+				lualine_y = {
+					"filetype",
+					{
+						"lsp_status",
+						icon = "", -- f013
+						symbols = {
+							spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+							done = "✓",
+							separator = " ",
+						},
+						ignore_lsp = {
+							"GitHub Copilot",
+							"null-ls",
+						},
+					},
+					"progress",
+				},
 				lualine_z = { "location" },
 			},
 			inactive_sections = {

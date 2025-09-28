@@ -36,7 +36,6 @@ return {
 
 			virtual_text = false
 			local function organize_imports()
-				-- Método moderno usando code actions
 				vim.lsp.buf.code_action({
 					context = {
 						only = { "source.organizeImports" },
@@ -45,7 +44,6 @@ return {
 				})
 			end
 
-			-- Using vim.lsp.config instead of require('lspconfig')
 			vim.lsp.config("ts_ls", {
 				capabilities = capabilities,
 				commands = {
@@ -109,7 +107,6 @@ return {
 				severity_sort = false,
 			})
 
-			-- vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>h", function()
 				vim.lsp.buf.hover({
 					border = "rounded",
