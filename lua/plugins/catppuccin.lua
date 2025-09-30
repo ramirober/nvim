@@ -6,6 +6,7 @@ return {
 	config = function()
 		require("catppuccin").setup({
 			-- compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
+			auto_integrations = true,
 			flavour = "mocha",
 			background = { -- :h background
 				light = "latte",
@@ -19,11 +20,13 @@ return {
 				shade = "dark",
 				percentage = 0.15, -- percentage of the shade to apply to the inactive window
 			},
-			no_italic = true, -- Force no italic
+			no_italic = false, -- Force no italic
 			no_bold = false, -- Force no bold
 			no_underline = false, -- Force no underline
 			styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-				comments = {}, -- Change the style of comments
+				comments = {
+					"italic",
+				}, -- Change the style of comments
 				conditionals = {},
 				loops = {},
 				functions = {},
@@ -41,12 +44,17 @@ return {
 			custom_highlights = {},
 			default_integrations = true,
 			integrations = {
-				cmp = true,
+				mason = true,
+				blink_cmp = {
+					style = "bordered",
+				},
 				gitsigns = true,
 				nvimtree = true,
 				neotree = true,
 				treesitter = true,
-				notify = false,
+				indent_blankline = {
+					enabled = true,
+				},
 				telescope = {
 					enabled = true,
 					-- style = "nvchad"
@@ -54,10 +62,6 @@ return {
 				illuminate = {
 					enabled = true,
 					lsp = false,
-				},
-				mini = {
-					enabled = true,
-					indentscope_color = "",
 				},
 				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
