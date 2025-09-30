@@ -2,7 +2,6 @@ return {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",
 	config = true,
-	-- use opts = {} for passing setup options
 	opts = {
 		disable_filetype = { "TelescopePrompt", "spectre_panel" },
 		disable_in_macro = true, -- disable when recording or executing a macro
@@ -21,5 +20,4 @@ return {
 		map_c_h = false, -- Map the <C-h> key to delete a pair
 		map_c_w = false, -- map <c-w> to delete a pair if possible
 	},
-	-- this is equalent to setup({}) function
 }

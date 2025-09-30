@@ -3,6 +3,7 @@
         "vim",
         "format",
         "virtual_text",
-        "root_dir"
+        "root_dir",
+        "conform"
     ]
 }

@@ -9,7 +9,7 @@ return {
 				"regex",
 			},
 			-- delay: delay in milliseconds
-			delay = 100,
+			delay = 200,
 			-- filetype_overrides: filetype specific overrides.
 			-- The keys are strings to represent the filetype while the values are tables that
 			-- supports the same keys passed to .configure except for filetypes_denylist and filetypes_allowlist
@@ -51,7 +51,7 @@ return {
 			-- should_enable: a callback that overrides all other settings to
 			-- enable/disable illumination. This will be called a lot so don't do
 			-- anything expensive in it.
-			should_enable = function(bufnr)
+			should_enable = function()
 				return true
 			end,
 			-- case_insensitive_regex: sets regex case sensitivity
