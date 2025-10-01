@@ -2,6 +2,14 @@
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
+	dependencies = {
+		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+		"MunifTanjim/nui.nvim",
+		-- OPTIONAL:
+		--   `nvim-notify` is only needed, if you want to use the notification view.
+		--   If not available, we use `mini` as the fallback
+		"rcarriga/nvim-notify",
+	},
 	opts = {
 		cmdline = {
 			enabled = true, -- enables the Noice cmdline UI
@@ -166,7 +174,11 @@ return {
 		markdown = {
 			hover = {
 				["|(%S-)|"] = vim.cmd.help, -- vim help links
-				["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
+				["%[.-%]%((%S-)%)"] = function(link)
+					vim.fn.jobstart({ "xdg-open", link }) -- en Linux
+					-- o en Mac:
+					-- vim.fn.jobstart({ "open", link })
+				end,
 			},
 			highlights = {
 				["|%S-|"] = "@text.reference",
@@ -199,13 +211,5 @@ return {
 		status = {}, --- @see section on statusline components
 		---@type NoiceFormatOptions
 		format = {}, --- @see section on formatting
-	},
-	dependencies = {
-		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-		"MunifTanjim/nui.nvim",
-		-- OPTIONAL:
-		--   `nvim-notify` is only needed, if you want to use the notification view.
-		--   If not available, we use `mini` as the fallback
-		"rcarriga/nvim-notify",
 	},
 }
