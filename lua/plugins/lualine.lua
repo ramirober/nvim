@@ -6,9 +6,9 @@ return {
 				theme = "catppuccin",
 				-- theme = "auto",
 				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
+				-- section_separators = { left = "", right = "" },
 				-- component_separators = { left = "|", right = "|" },
-				-- section_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = { "neo-tree", "Avante", "AvanteSelectedFiles", "AvanteInput" },
 					winbar = { "neo-tree", "Alpha", "Avante", "AvanteSelectedFiles", "AvanteInput" },
@@ -96,11 +96,11 @@ return {
 					{
 						"filename",
 						file_status = true, -- displays file status (readonly status, modified status)
+						path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
 						symbols = {
 							modified = "●", -- Text to show when the file is modified.
 							readonly = "", -- Text to show when the file is non-modifiable or readonly.
 						},
-						path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
 					},
 				},
 				lualine_c = {},
@@ -110,8 +110,7 @@ return {
 			},
 			tabline = {
 				lualine_a = {},
-				lualine_b = {},
-				lualine_c = {
+				lualine_b = {
 					{
 						"buffers",
 						symbols = {
@@ -121,9 +120,11 @@ return {
 							directory = "", -- Text to show when the buffer is a directory
 						},
 						show_filename_only = true,
+						max_length = vim.o.columns,
 						mode = 2,
 					},
 				},
+				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {},
 				lualine_z = {},
