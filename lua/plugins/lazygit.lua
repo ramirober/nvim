@@ -1,24 +1,24 @@
 return {
-	-- "kdheepak/lazygit.nvim",
-	-- lazy = true,
-	-- cmd = {
-	-- 	"LazyGit",
-	-- 	"LazyGitConfig",
-	-- 	"LazyGitCurrentFile",
-	-- 	"LazyGitFilter",
-	-- 	"LazyGitFilterCurrentFile",
-	-- },
-	-- -- setting the keybinding for LazyGit with 'keys' is recommended in
-	-- -- order to load the plugin when the command is run for the first time
-	-- keys = {
-	-- 	{ "<leader>1", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-	-- },
-	-- -- optional for floating window border decoration
-	-- dependencies = {
-	-- 	"nvim-telescope/telescope.nvim",
-	-- 	"nvim-lua/plenary.nvim",
-	-- },
-	-- config = function()
-	-- 	require("telescope").load_extension("lazygit")
-	-- end,
+	"kdheepak/lazygit.nvim",
+	lazy = true,
+	cmd = {
+		"LazyGit",
+		"LazyGitConfig",
+		"LazyGitCurrentFile",
+		"LazyGitFilter",
+		"LazyGitFilterCurrentFile",
+	},
+	-- setting the keybinding for LazyGit with 'keys' is recommended in
+	-- order to load the plugin when the command is run for the first time
+	keys = {
+		{ "<leader>1", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+	},
+	-- optional for floating window border decoration
+	dependencies = {
+		"nvim-telescope/telescope.nvim",
+		"nvim-lua/plenary.nvim",
+	},
+	config = function()
+		require("telescope").load_extension("lazygit")
+	end,
 }

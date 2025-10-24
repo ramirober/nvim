@@ -9,6 +9,6 @@ return {
 				transparent = false, -- Disable setting the background color.
 			},
 		})
-		-- vim.cmd("colorscheme github_dark")
+		-- vim.cmd("colorscheme github_dark_default")
 	end,
 }

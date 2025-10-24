@@ -3,8 +3,10 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = "catppuccin",
 				-- theme = "auto",
+				theme = "catppuccin",
+				-- theme = "ayu_mirage",
+				-- theme = "github_dark_default",
 				component_separators = { left = "", right = "" },
 				-- section_separators = { left = "", right = "" },
 				-- component_separators = { left = "|", right = "|" },
