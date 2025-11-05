@@ -20,7 +20,7 @@ return {
 				shade = "dark",
 				percentage = 0.15, -- percentage of the shade to apply to the inactive window
 			},
-			no_italic = false, -- Force no italic
+			no_italic = true, -- Force no italic
 			no_bold = false, -- Force no bold
 			no_underline = false, -- Force no underline
 			styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
@@ -41,7 +41,15 @@ return {
 				-- miscs = {}, -- Uncomment to turn off hard-coded styles
 			},
 			color_overrides = {},
-			custom_highlights = {},
+			custom_highlights = function(colors)
+				return {
+					-- React/JSX components - link to Type highlighting (yellow)
+					["@tag.tsx"] = { link = "@type" },
+					["@tag.jsx"] = { link = "@type" },
+					["@tag.attribute.tsx"] = { link = "@boolean" },
+					["@tag.attribute.jsx"] = { link = "@boolean" },
+				}
+			end,
 			default_integrations = true,
 			integrations = {
 				mason = true,
