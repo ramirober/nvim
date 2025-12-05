@@ -89,11 +89,11 @@ return {
 				severity_sort = false,
 			})
 
-			vim.keymap.set("n", "<leader>h", function()
-				vim.lsp.buf.hover({
-					border = "rounded",
-				})
-			end)
+			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+				border = "rounded",
+			})
+
+			vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover)
 
 			vim.keymap.set("n", "<leader>w", vim.diagnostic.open_float, {})
 			vim.keymap.set("n", "<leader>g", vim.lsp.buf.definition, {})

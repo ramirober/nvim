@@ -6,7 +6,7 @@ return {
 	config = function()
 		require("github-theme").setup({
 			options = {
-				transparent = false, -- Disable setting the background color.
+				transparent = true, -- Disable setting the background color.
 			},
 		})
 		-- vim.cmd("colorscheme github_dark_default")

@@ -9,10 +9,10 @@ return {
 			auto_integrations = true,
 			flavour = "mocha",
 			background = { -- :h background
-				light = "latte",
+				light = "",
 				dark = "mocha",
 			},
-			transparent_background = false,
+			transparent_background = true,
 			term_colors = true,
 			show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
 			dim_inactive = {
@@ -65,7 +65,6 @@ return {
 				},
 				telescope = {
 					enabled = true,
-					-- style = "nvchad"
 				},
 				illuminate = {
 					enabled = true,

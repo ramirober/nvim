@@ -38,14 +38,13 @@ return {
 			max_file_length = 40000, -- Disable if file is longer than this (in lines)
 			preview_config = {
 				-- Options passed to nvim_open_win
-				border = "rounded",
-				focusable = false,
+				focusable = true,
 				style = "minimal",
 				relative = "cursor",
 				row = 0,
 				col = 1,
 			},
 		})
-		vim.keymap.set("n", "<leader>d", gitsigns.preview_hunk, {})
+		vim.keymap.set("n", "<leader>d", gitsigns.preview_hunk_inline, {})
 	end,
 }
