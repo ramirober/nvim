@@ -39,7 +39,6 @@ return {
 							separator = " ",
 						},
 						ignore_lsp = {
-							"GitHub Copilot",
 							-- "null-ls",
 						},
 					},
@@ -67,7 +66,6 @@ return {
 							separator = " ",
 						},
 						ignore_lsp = {
-							"GitHub Copilot",
 							-- "null-ls",
 						},
 					},
@@ -125,6 +123,13 @@ return {
 						show_filename_only = true,
 						max_length = vim.o.columns,
 						mode = 2,
+						fmt = function(name)
+							local max_len = 18
+							if #name > max_len then
+								return name:sub(1, max_len - 1) .. "…"
+							end
+							return name
+						end,
 					},
 				},
 				lualine_c = {},

@@ -3,7 +3,6 @@ return {
 	-- optional: provides snippets for the snippet source
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		"giuxtaposition/blink-cmp-copilot",
 	},
 
 	-- use a release tag to download pre-built binaries
@@ -55,6 +54,8 @@ return {
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
+
+		providers = {},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
 		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
