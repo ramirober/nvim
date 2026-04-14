@@ -48,6 +48,8 @@ return {
 					["@tag.jsx"] = { link = "@type" },
 					["@tag.attribute.tsx"] = { link = "@boolean" },
 					["@tag.attribute.jsx"] = { link = "@boolean" },
+					-- Neo-tree: green for new/untracked files
+					NeoTreeGitUntracked = { fg = colors.green },
 				}
 			end,
 			default_integrations = true,

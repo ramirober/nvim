@@ -381,8 +381,8 @@ return {
 				auto_expand_width = false, -- expand the window when file exceeds the window width. does not work with position = "float"
 				popup = { -- settings that apply to float position only
 					size = {
-						height = "80%",
-						width = "50%",
+						height = 8,
+						width = 5,
 					},
 					position = "50%", -- 50% means center it
 					title = function(state) -- format the text that appears at the top of a popup window

@@ -18,7 +18,6 @@ return {
 					tabline = { "neo-tree", "Avante", "AvanteSelectedFiles", "AvanteInput" },
 				},
 			},
-			disabled_buftypes = { "quickfix", "prompt" },
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {

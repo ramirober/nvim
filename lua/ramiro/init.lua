@@ -23,6 +23,9 @@ vim.opt.termguicolors = true
 
 vim.o.signcolumn = "yes"
 
+-- Hide ~ characters on empty lines after end of buffer
+vim.opt.fillchars = { eob = " " }
+
 -- Keybind for switching between last two opened files
 vim.keymap.set("n", "<leader><leader>", "<C-^>")
 
