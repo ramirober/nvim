@@ -31,3 +31,4 @@ vim.keymap.set("n", "<leader><leader>", "<C-^>")
 
 -- Use system clipboard
 vim.api.nvim_set_option("clipboard", "unnamed")
+

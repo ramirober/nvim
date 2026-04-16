@@ -51,7 +51,40 @@ return {
 			-- set to -1 to disable the resize timer entirely
 			--                           -- NOTE: this will speed up to 50 ms for 1 second following a resize
 			sort_case_insensitive = false, -- used when sorting files and directories in the tree
-			sort_function = nil, -- uses a custom function for sorting files and directories in the tree
+			sort_function = function(a, b)
+				-- Natural sort: treats numbers within filenames as numeric values
+				-- so that step2 < step10 instead of step10 < step2
+				local a_name = a.name or ""
+				local b_name = b.name or ""
+				-- Directories first, then files
+				if a.type ~= b.type then
+					return a.type < b.type -- "directory" < "file"
+				end
+				-- Natural sort comparison
+				local i1, i2 = 1, 1
+				while true do
+					local c1 = a_name:sub(i1, i1)
+					local c2 = b_name:sub(i2, i2)
+					if c1 == "" and c2 == "" then return a.path < b.path end
+					if c1 == "" then return true end
+					if c2 == "" then return false end
+					if c1:match("%d") and c2:match("%d") then
+						local num1 = a_name:match("(%d+)", i1)
+						local num2 = b_name:match("(%d+)", i2)
+						if tonumber(num1) ~= tonumber(num2) then
+							return tonumber(num1) < tonumber(num2)
+						end
+						i1 = i1 + #num1
+						i2 = i2 + #num2
+					else
+						local l1 = c1:lower()
+						local l2 = c2:lower()
+						if l1 ~= l2 then return l1 < l2 end
+						i1 = i1 + 1
+						i2 = i2 + 1
+					end
+				end
+			end,
 			use_popups_for_input = true, -- If false, inputs will use vim.ui.input() instead of custom floats.
 			use_default_mappings = true,
 			-- source_selector provides clickable tabs to switch between sources.
@@ -752,5 +785,7 @@ return {
 				vim.cmd("Neotree action=focus")
 			end
 		end, { noremap = true, silent = true })
+
+		vim.keymap.set("n", "<leader>t", "<cmd>Neotree toggle<cr>", { noremap = true, silent = true })
 	end,
 }

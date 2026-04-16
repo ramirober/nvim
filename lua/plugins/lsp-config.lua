@@ -90,13 +90,18 @@ return {
 			})
 
 			vim.keymap.set("n", "<leader>h", function()
-				vim.lsp.buf.hover({ border = "rounded", max_width = 80 })
+				vim.lsp.buf.hover({
+					border = "rounded",
+					stylize_markdown = true,
+				})
 			end)
 
 			vim.keymap.set("n", "<leader>w", vim.diagnostic.open_float, {})
 			vim.keymap.set("n", "<leader>g", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>.", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<leader>,", vim.diagnostic.goto_next, {})
+			vim.keymap.set("n", "<leader>,", function()
+				vim.diagnostic.jump({ count = 1, float = true })
+			end)
 			vim.keymap.set("n", "<leader>o", organize_imports, {})
 		end,
 	},
