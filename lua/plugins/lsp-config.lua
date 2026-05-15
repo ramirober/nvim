@@ -36,12 +36,17 @@ return {
 
 			virtual_text = false
 			local function organize_imports()
-				vim.lsp.buf.code_action({
-					context = {
-						only = { "source.organizeImports" },
-					},
-					apply = true,
-				})
+				if #vim.lsp.get_clients({ bufnr = 0, name = "ts_ls" }) > 0 then
+					vim.lsp.buf.execute_command({
+						command = "_typescript.organizeImports",
+						arguments = { vim.api.nvim_buf_get_name(0) },
+					})
+				else
+					vim.lsp.buf.code_action({
+						context = { only = { "source.organizeImports" }, diagnostics = {} },
+						apply = true,
+					})
+				end
 			end
 			vim.lsp.config("ts_ls", {
 				-- capabilities = capabilities,

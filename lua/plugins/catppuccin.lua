@@ -12,7 +12,7 @@ return {
 				light = "",
 				dark = "mocha",
 			},
-			transparent_background = true,
+			transparent_background = false,
 			term_colors = true,
 			show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
 			dim_inactive = {
@@ -44,10 +44,10 @@ return {
 			custom_highlights = function(colors)
 				return {
 					-- React/JSX components - link to Type highlighting (yellow)
-					["@tag.tsx"] = { link = "@type" },
-					["@tag.jsx"] = { link = "@type" },
-					["@tag.attribute.tsx"] = { link = "@boolean" },
-					["@tag.attribute.jsx"] = { link = "@boolean" },
+					-- ["@tag.tsx"] = { link = "@type" },
+					-- ["@tag.jsx"] = { link = "@type" },
+					-- ["@tag.attribute.tsx"] = { link = "@boolean" },
+					-- ["@tag.attribute.jsx"] = { link = "@boolean" },
 					-- Neo-tree: green for new/untracked files
 					NeoTreeGitUntracked = { fg = colors.green },
 				}

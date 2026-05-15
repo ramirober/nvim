@@ -14,7 +14,7 @@ return {
 			-- The name used here must be the same name you would use in a require() call.
 			sources = {
 				"filesystem",
-				"git_status",
+				-- "git_status",
 				-- "document_symbols",
 			},
 			add_blank_line_at_top = false, -- Add a blank line at the top of the tree.
@@ -94,8 +94,8 @@ return {
 				show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
 				-- of the top visible node when scrolled down.
 				sources = {
-					{ source = "filesystem" },
-					{ source = "git_status" },
+					-- { source = "filesystem" },
+					-- { source = "git_status" },
 				},
 				content_layout = "start", -- only with `tabs_layout` = "equal", "focus"
 				--                start  : |/ 󰓩 bufname     \/...

@@ -30,7 +30,7 @@ return {
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		keymap = {
 			preset = "enter",
-			["<tab>"] = { "accept", "fallback" },
+			["<Tab>"] = { "select_and_accept", "fallback" },
 		},
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
