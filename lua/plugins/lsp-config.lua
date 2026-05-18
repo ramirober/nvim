@@ -97,6 +97,7 @@ return {
 			vim.keymap.set("n", "<leader>h", function()
 				vim.lsp.buf.hover({
 					border = "rounded",
+					max_width = 80,
 					stylize_markdown = true,
 				})
 			end)
