@@ -3,14 +3,15 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
+				globalstatus = true,
 				theme = "auto",
 				-- theme = "catppuccin",
 				-- theme = "onedark",
 				-- theme = "ayu",
 				-- theme = "github_dark_default",
-				component_separators = { left = "", right = "" },
+				-- component_separators = { left = "", right = "" },
 				-- section_separators = { left = "", right = "" },
-				-- component_separators = { left = "|", right = "|" },
+				component_separators = { left = "|", right = "|" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = { "neo-tree", "Avante", "AvanteSelectedFiles", "AvanteInput" },
@@ -120,15 +121,16 @@ return {
 							directory = "", -- Text to show when the buffer is a directory
 						},
 						show_filename_only = true,
-						max_length = vim.o.columns,
-						mode = 2,
-						fmt = function(name)
-							local max_len = 18
-							if #name > max_len then
-								return name:sub(1, max_len - 1) .. "…"
-							end
-							return name
-						end,
+						max_length = vim.o.columns * 2 / 3,
+						mode = 0,
+						-- fmt = function(name)
+						-- 	local max_len = 18
+						-- 	if #name > max_len then
+						-- 		return name:sub(1, max_len - 1) .. "…"
+						-- 	end
+						-- 	return name
+						-- end,
+						use_mode_colors = true,
 					},
 				},
 				lualine_c = {},

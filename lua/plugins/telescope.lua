@@ -22,7 +22,7 @@ return {
 					-- sorting_strategy = "ascending",
 					-- selection_strategy = "follow",
 					-- layout_strategy = "vertical",
-					-- path_display = { "smart" },
+					path_display = { "filename_first" },
 					mappings = {
 						n = {
 							["dd"] = require("telescope.actions").delete_buffer,
@@ -34,16 +34,20 @@ return {
 						theme = "dropdown",
 						hidden = false,
 						previewer = false,
-						-- sorting_strategy = "ascending",
-						-- layout_strategy = "vertical",
+						layout_config = {
+							width = 0.95,
+							height = 0.85,
+						},
 					},
 					oldfiles = {
-						-- theme = "dropdown",
 						hidden = false,
 						previewer = false,
-						-- sorting_strategy = "ascending",
 						initial_mode = "normal",
 						only_cwd = true,
+						layout_config = {
+							width = 0.95,
+							height = 0.85,
+						},
 					},
 					buffers = {
 						theme = "dropdown",
@@ -52,6 +56,10 @@ return {
 						sort_mru = true,
 						initial_mode = "normal",
 						ignore_current_buffer = true,
+						layout_config = {
+							width = 0.95,
+							height = 0.85,
+						},
 					},
 					live_grep = {
 						previewer = true,
