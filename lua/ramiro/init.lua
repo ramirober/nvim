@@ -26,6 +26,27 @@ vim.o.signcolumn = "yes"
 -- Hide ~ characters on empty lines after end of buffer
 vim.opt.fillchars = { eob = " " }
 
+-- Auto-recargar archivos modificados fuera de Neovim (agentes IA, git, etc.)
+-- autoread ya viene activo por defecto; el checktime es el que dispara la detección.
+-- FocusGained es el trigger clave (volver a Neovim tras el agente): instantáneo y sin costo.
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI", "TermClose", "TermLeave" }, {
+	pattern = "*",
+	callback = function()
+		if vim.fn.mode() ~= "c" and vim.fn.getcmdwintype() == "" then
+			vim.cmd("checktime")
+		end
+	end,
+})
+
+-- Aviso discreto cuando un archivo se recargó solo
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+	pattern = "*",
+	callback = function()
+		vim.notify("Archivo recargado (cambió en disco)", vim.log.levels.INFO)
+	end,
+})
+
 -- Keybind for switching between last two opened files
 vim.keymap.set("n", "<leader><leader>", "<C-^>")
 

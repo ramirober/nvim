@@ -1,88 +1,45 @@
 return {
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>p", builtin.find_files, {})
-			vim.keymap.set("n", "<leader>v", builtin.oldfiles, {})
-			vim.keymap.set("n", "<leader>l", builtin.live_grep, {})
-			vim.keymap.set("n", "<leader>b", builtin.buffers, {})
-			vim.keymap.set("n", "<leader>s", builtin.current_buffer_fuzzy_find, {})
-		end,
+	"nvim-telescope/telescope.nvim",
+	dependencies = { "nvim-lua/plenary.nvim" },
+	keys = {
+		{
+			"<leader>b",
+			function()
+				require("telescope.builtin").buffers()
+			end,
+			desc = "Buffers",
+		},
 	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		config = function()
-			-- TODO: Check sorting order (inverted) on dropdown theme and fix it
-			-- local selectedTheme = "dropdown" -- Themes: dropdown, cursor, ivy
-			require("telescope").setup({
-				defaults = {
-					-- theme = "dropdown",
-					-- sorting_strategy = "ascending",
-					-- selection_strategy = "follow",
-					-- layout_strategy = "vertical",
-					path_display = { "filename_first" },
-					mappings = {
-						n = {
-							["dd"] = require("telescope.actions").delete_buffer,
-						},
+	config = function()
+		require("telescope").setup({
+			defaults = {
+				path_display = { "filename_first" },
+				mappings = {
+					n = {
+						["dd"] = require("telescope.actions").delete_buffer,
 					},
 				},
-				pickers = {
-					find_files = {
-						theme = "dropdown",
-						hidden = false,
-						previewer = false,
-						layout_config = {
-							width = 0.95,
-							height = 0.85,
-						},
+			},
+			pickers = {
+				buffers = {
+					theme = "dropdown",
+					previewer = false,
+					sort_lastused = true,
+					sort_mru = true,
+					initial_mode = "insert",
+					ignore_current_buffer = true,
+					layout_config = {
+						width = 0.8,
+						height = 0.5,
 					},
-					oldfiles = {
-						hidden = false,
-						previewer = false,
-						initial_mode = "normal",
-						only_cwd = true,
-						layout_config = {
-							width = 0.95,
-							height = 0.85,
-						},
-					},
-					buffers = {
-						theme = "dropdown",
-						previewer = false,
-						sort_lastused = true,
-						sort_mru = true,
-						initial_mode = "normal",
-						ignore_current_buffer = true,
-						layout_config = {
-							width = 0.95,
-							height = 0.85,
-						},
-					},
-					live_grep = {
-						previewer = true,
+					borderchars = {
+						prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+						results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+						preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 					},
 				},
-				extensions = {
-					-- Telescope extension for code actions
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-					extensions = {
-						fzf = {
-							fuzzy = true, -- false will only do exact matching
-							override_generic_sorter = true, -- override the generic sorter
-							override_file_sorter = true, -- override the file sorter
-							case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-							-- the default case_mode is "smart_case"
-						},
-					},
-				},
-			})
-			require("telescope").load_extension("ui-select")
-			require("telescope").load_extension("fzf")
-		end,
-	},
+			},
+		})
+		require("telescope").load_extension("fzf")
+	end,
 }

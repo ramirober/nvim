@@ -65,9 +65,6 @@ return {
 				indent_blankline = {
 					enabled = true,
 				},
-				telescope = {
-					enabled = true,
-				},
 				illuminate = {
 					enabled = true,
 					lsp = false,
