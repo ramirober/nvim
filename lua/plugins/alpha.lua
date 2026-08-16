@@ -9,6 +9,9 @@ return {
 		local dashboard = require("alpha.themes.startify")
 		-- local dashboard = require("alpha.themes.dashboard")
 
+		-- Solo mostrar MRU del proyecto (cwd), ocultar MRU globales
+		dashboard.mru_sections = { "mru_cwd" }
+
 		dashboard.section.header.val = {
 			-- [[▗▖  ▗▖▗▖  ▗▖▗▄▄▄▖▗▖  ▗▖]],
 			-- [[▐▛▚▖▐▌▐▌  ▐▌  █  ▐▛▚▞▜▌]],

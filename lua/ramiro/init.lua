@@ -33,8 +33,26 @@ vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI", "TermClose", "TermLeave" }, {
 	pattern = "*",
 	callback = function()
+		-- No recargar mientras estamos en una terminal (ej. lazygit flotante):
+		-- lazygit cambia archivos en disco constantemente y el checktime al volver
+		-- el foco recargaría todos los buffers, corrompiendo la flotante.
+		if vim.bo.buftype == "terminal" then
+			return
+		end
 		if vim.fn.mode() ~= "c" and vim.fn.getcmdwintype() == "" then
 			vim.cmd("checktime")
+		end
+	end,
+})
+
+-- Al volver el foco a un buffer de terminal (cambiar de pestaña en Ghostty y
+-- volver), Neovim sale del modo terminal-insert. Re-entramos automáticamente
+-- para no perder el foco de input de lazygit y otras terminales.
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained" }, {
+	pattern = "*",
+	callback = function()
+		if vim.bo.buftype == "terminal" then
+			vim.cmd("startinsert")
 		end
 	end,
 })
@@ -61,6 +79,16 @@ vim.keymap.set("x", "<leader>m", "gc", { remap = true, desc = "Toggle comment se
 
 -- Use system clipboard
 vim.api.nvim_set_option("clipboard", "unnamed")
+
+-- ¿Hay una ventana de neo-tree visible en la pestaña actual?
+local function neotree_is_open()
+	for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+		if vim.bo[vim.api.nvim_win_get_buf(win)].filetype == "neo-tree" then
+			return true
+		end
+	end
+	return false
+end
 
 -- Smart buffer close: cierra buffer, no Neovim. :qa para salir de Neovim.
 local function smart_bufclose(opts)
@@ -90,13 +118,18 @@ local function smart_bufclose(opts)
 			return (a.lastused or 0) > (b.lastused or 0)
 		end)
 		vim.api.nvim_set_current_buf(real_bufs[1].bufnr)
-	else
-		-- Último buffer: abrir Alpha
+	elseif neotree_is_open() then
+		-- Último buffer con el file explorer abierto: dejar Alpha para no
+		-- cerrar neo-tree al irse la última ventana de edición (simil IDE)
 		if pcall(require, "alpha") then
 			vim.cmd("Alpha")
 		else
 			vim.cmd("enew")
 		end
+	else
+		-- Último buffer sin file explorer: no hay nada que preservar, salir
+		vim.cmd("qa" .. (opts.force and "!" or ""))
+		return
 	end
 	vim.cmd("bdelete" .. (opts.force and "!" or "") .. " " .. current)
 end

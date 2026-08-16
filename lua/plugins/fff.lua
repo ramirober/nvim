@@ -121,6 +121,7 @@ return {
 				log_file = vim.fn.stdpath("log") .. "/fff.log",
 				log_level = "info",
 			},
+			hl = { winhl = "Normal:NormalFloat,FloatBorder:FloatBorder,FloatTitle:Title" },
 		})
 	end,
 }

@@ -24,6 +24,8 @@ return {
 					"gopls",
 					"hls",
 					"bashls",
+					"basedpyright",
+					"ruff",
 				},
 			})
 		end,
@@ -34,7 +36,6 @@ return {
 		config = function()
 			-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			virtual_text = false
 			local function organize_imports()
 				if #vim.lsp.get_clients({ bufnr = 0, name = "ts_ls" }) > 0 then
 					vim.lsp.buf.execute_command({
@@ -59,6 +60,12 @@ return {
 			})
 			vim.lsp.config("jdtls", {
 				-- capabilities = capabilities,
+				-- Lombok: jdtls necesita lombok.jar como javaagent para entender
+				-- @Data y los getters/setters generados (mason ya lo trae con jdtls).
+				cmd = {
+					"jdtls",
+					"--jvm-arg=-javaagent:" .. vim.fn.expand("$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"),
+				},
 			})
 			vim.lsp.config("clangd", {
 				-- capabilities = capabilities,
@@ -69,8 +76,25 @@ return {
 			vim.lsp.config("html", {
 				-- capabilities = capabilities,
 			})
-			vim.lsp.config("cssls", {
-				-- capabilities = capabilities,
+			-- Python: basedpyright hace tipos/hover/goto, ruff hace lint + fixes.
+			vim.lsp.config("basedpyright", {
+				settings = {
+					basedpyright = {
+						analysis = {
+							-- El default de basedpyright ("recommended") es durísimo y llena
+							-- de diagnósticos cualquier código con numpy/pandas/sklearn.
+							typeCheckingMode = "standard",
+							diagnosticMode = "openFilesOnly",
+							autoImportCompletions = true,
+						},
+					},
+				},
+			})
+			vim.lsp.config("ruff", {
+				-- El hover de ruff es pobre y pisa al de basedpyright si ambos responden.
+				on_attach = function(client)
+					client.server_capabilities.hoverProvider = false
+				end,
 			})
 			vim.lsp.config("lua_ls", {
 				-- capabilities = capabilities,

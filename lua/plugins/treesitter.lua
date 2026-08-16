@@ -24,6 +24,9 @@ return {
 			"c",
 			"markdown",
 			"markdown_inline",
+			"python",
+			"toml",
+			"yaml",
 		}
 
 		local installed = nts.get_installed and nts.get_installed() or {}
@@ -51,6 +54,9 @@ return {
 				"haskell",
 				"c",
 				"markdown",
+				"python",
+				"toml",
+				"yaml",
 			},
 			callback = function(args)
 				pcall(vim.treesitter.start, args.buf)
