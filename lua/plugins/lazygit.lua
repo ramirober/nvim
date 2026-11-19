@@ -11,7 +11,7 @@ return {
 	-- setting the keybinding for LazyGit with 'keys' is recommended in
 	-- order to load the plugin when the command is run for the first time
 	keys = {
-		{ "<leader>1", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+		-- { "<leader>1", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 	},
 	-- optional for floating window border decoration
 	dependencies = {

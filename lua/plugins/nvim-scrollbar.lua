@@ -2,129 +2,32 @@ return {
 	"petertriho/nvim-scrollbar",
 	config = function()
 		require("scrollbar").setup({
-			show = true,
-			show_in_active_only = false,
 			set_highlights = true,
-			folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
-			max_lines = false, -- disables if no. of lines in buffer exceeds this
-			hide_if_all_visible = true, -- Hides everything if all lines are visible
-			throttle_ms = 100,
-			handle = {
-				text = " ",
-				blend = 30, -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
-				color = nil,
-				color_nr = nil, -- cterm
-				highlight = "CursorColumn",
-				hide_if_all_visible = true, -- Hides handle if all lines are visible
+			exclude = {
+				buftypes = { "terminal" },
+				-- A keyed table adds to the default filetypes.
+				filetypes = { NeoTree = true },
+			},
+			providers = {
+				cursor = true,
+				diagnostic = true,
+				gitsigns = true, -- Requires gitsigns
+				search = false,
+				ale = false,
 			},
 			marks = {
-				Cursor = {
-					text = "•",
-					priority = 0,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "Normal",
-				},
-				Search = {
-					text = { "-", "=" },
-					priority = 1,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "Search",
-				},
-				Error = {
-					text = { "-", "=" },
-					priority = 2,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "DiagnosticVirtualTextError",
-				},
-				Warn = {
-					text = { "-", "=" },
-					priority = 3,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "DiagnosticVirtualTextWarn",
-				},
-				Info = {
-					text = { "-", "=" },
-					priority = 4,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "DiagnosticVirtualTextInfo",
-				},
-				Hint = {
-					text = { "-", "=" },
-					priority = 5,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "DiagnosticVirtualTextHint",
-				},
-				Misc = {
-					text = { "-", "=" },
-					priority = 6,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "Normal",
-				},
-				GitAdd = {
-					text = "·",
-					priority = 7,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "GitSignsAdd",
-				},
-				GitChange = {
-					text = "·",
-					priority = 7,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "GitSignsChange",
-				},
-				GitDelete = {
-					text = "𛲖",
-					priority = 7,
-					gui = nil,
-					color = nil,
-					cterm = nil,
-					color_nr = nil, -- cterm
-					highlight = "GitSignsDelete",
-				},
+				GitAdd = { text = { "·" }, priority = 7, highlight = "GitSignsAdd" },
+				GitChange = { text = { "·" }, priority = 7, highlight = "GitSignsChange" },
+				GitDelete = { text = { "𛲖" }, priority = 7, highlight = "GitSignsDelete" },
 			},
-			excluded_buftypes = {
-				"terminal",
-			},
-			excluded_filetypes = {
-				"dropbar_menu",
-				"dropbar_menu_fzf",
-				"DressingInput",
-				"cmp_docs",
-				"cmp_menu",
-				"noice",
-				"prompt",
-				"TelescopePrompt",
-				"NeoTree",
-			},
-			autocmd = {
-				render = {
+			scrollbar = {
+				show = true,
+				visibility = "all",
+				max_lines = false,
+				throttle_ms = 100,
+				unit = "screenline", -- accounts for closed folds and wrapped lines
+				hide_if_all_visible = true,
+				events = {
 					"BufWinEnter",
 					"TabEnter",
 					"TermEnter",
@@ -134,20 +37,12 @@ return {
 					"VimResized",
 					"WinScrolled",
 				},
-				clear = {
-					"BufWinLeave",
-					"TabLeave",
-					"TermLeave",
-					"WinLeave",
+				thumb = {
+					text = " ",
+					blend = 30,
+					highlight = "CursorColumn",
+					hide_if_all_visible = true,
 				},
-			},
-			handlers = {
-				cursor = true,
-				diagnostic = true,
-				gitsigns = true, -- Requires gitsigns
-				handle = true,
-				search = false, -- Requires hlslens
-				ale = false, -- Requires ALE
 			},
 		})
 	end,

@@ -19,8 +19,6 @@ vim.opt.nu = true
 -- Enable relative line numbers
 vim.opt.relativenumber = true
 
-vim.opt.termguicolors = true
-
 vim.o.signcolumn = "yes"
 
 -- Hide ~ characters on empty lines after end of buffer
